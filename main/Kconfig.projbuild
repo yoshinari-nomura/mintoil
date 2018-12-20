@@ -1,14 +1,72 @@
-menu "Example Configuration"
+menu "Mintoil Configuration"
 
-config BLINK_GPIO
-    int "Blink GPIO number"
-	range 0 34
-	default 5
-	help
-		GPIO number (IOxx) to blink on and off.
+config LAMP_LED_GPIO
+    int "Pilot lamp LED GPIO number"
+        range 0 33
+        default 32
+        help
+            GPIO number (IOxx) to blink on and off.
 
-		Some GPIOs are used for other purposes (flash connections, etc.) and cannot be used to blink.
+            GPIOs 35-39 are input-only so cannot be used as outputs.
 
-		GPIOs 35-39 are input-only so cannot be used as outputs.
+config SH31_I2C_SDA_GPIO
+    int "I2C SDA GPIO number for SH31"
+        range 0 33
+        default 17
+        help
+            GPIO number (IOxx) for I2C SDA.
 
+config SH31_I2C_SCL_GPIO
+    int "I2C SCL GPIO number for SH31"
+        range 0 33
+        default 18
+        help
+            GPIO number (IOxx) for I2C SCL.
+
+config SH31_I2C_ADDRESS
+    hex "I2C SCL GPIO number for SH31"
+        range 0x44 0x45
+        default 0x44
+        help
+            I2C address for SH31.
+
+config WIFI_SSID
+    string "WiFi SSID"
+        default "myssid"
+        help
+            SSID (network name) for the example to connect to.
+
+config WIFI_PASSWORD
+    string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2) for the example to use.
+
+            Can be left blank if the network has no security set.
+
+config THINGSPEAK_APIKEY
+    string "ThingSpeak APIKEY"
+        default "MYAPIKEY"
+        help
+            ThingSpeak APIKEY to write.
+
+            Can not be BLANK.
+
+config THINGSPEAK_HUMIDITY_FIELD_NUMBER
+    int "ThingSpeak field number for humidity record."
+        range 1 8
+        default 1
+        help
+            Field number that should be used for posting humidity.
+
+            Can not be BLANK. Should not be same as the field for temperature.
+
+config THINGSPEAK_TEMPERAT_FIELD_NUMBER
+    int "ThingSpeak field number for temperature record."
+        range 1 8
+        default 2
+        help
+            Field number that should be used for posting temperature.
+
+            Can not be BLANK. Should not be same as the field for humidity.
 endmenu
