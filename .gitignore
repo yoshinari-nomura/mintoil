@@ -54,4 +54,5 @@ dkms.conf
 
 # ESP32 project-specific files
 sdkconfig.old
+sdkconfig
 build/
