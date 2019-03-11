@@ -9,27 +9,6 @@ config LAMP_LED_GPIO
 
             GPIOs 35-39 are input-only so cannot be used as outputs.
 
-config SH31_I2C_SDA_GPIO
-    int "I2C SDA GPIO number for SH31"
-        range 0 33
-        default 17
-        help
-            GPIO number (IOxx) for I2C SDA.
-
-config SH31_I2C_SCL_GPIO
-    int "I2C SCL GPIO number for SH31"
-        range 0 33
-        default 18
-        help
-            GPIO number (IOxx) for I2C SCL.
-
-config SH31_I2C_ADDRESS
-    hex "I2C SCL GPIO number for SH31"
-        range 0x44 0x45
-        default 0x44
-        help
-            I2C address for SH31.
-
 config WIFI_SSID
     string "WiFi SSID"
         default "myssid"
