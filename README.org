@@ -24,5 +24,53 @@
 # #+LaTeX: \thispagestyle{empty}
 
 * Mintoil Project
+* For developers
+** Install IDF-SDK
+   + [[https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html][Get Started - ESP-IDF Programming Guide v4.3]]
 
-TBD
+   #+begin_src shell-script
+     # Debian
+     sudo apt-get install git wget flex bison gperf
+     sudo apt-get install python3 python3-pip python3-setuptools
+     sudo apt-get install cmake ninja-build ccache
+     sudo apt-get install libffi-dev libssl-dev dfu-util libusb-1.0-0
+
+     # git clone SDK
+     git clone -b v4.3 --recursive https://github.com/espressif/esp-idf.git
+
+     # install stuff into /home/nom/.espressif
+     IDF_TOOLS_PATH=$HOME/.espressif ./install.sh
+
+     # setup environment variables
+     #
+     # You may add alias to your shell-startup file:
+     #     alias get_idf='. $HOME/esp/esp-idf/export.sh'
+     #
+     . ./export.sh
+
+     # Check if sample project can be build.
+     cd $HOME
+     cp -pr $IDF_PATH/examples/get-started/hello_world .
+
+     # build
+     idf.py set-target esp32
+     idf.py menuconfig
+     idf.py build
+
+     # add user to dialout group
+     sudo usermod -aG dialout $(whoami)
+     newgrp dialout
+
+     # flash hello_world program.
+     idf.py -p /dev/ttyUSB0 flash
+
+     # To exit IDF monitor use the shortcut Ctrl+].
+     idf.py -p /dev/ttyUSB0 monitor
+   #+end_src
+
+** Clone and build mintoil
+   #+begin_src shell-script
+     # also https://github.com/yoshinari-nomura/mintoil.git works
+     git clone git@github.com:yoshinari-nomura/mintoil.git
+
+   #+end_src
