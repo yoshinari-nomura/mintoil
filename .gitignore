@@ -56,3 +56,6 @@ dkms.conf
 sdkconfig.old
 sdkconfig
 build/
+
+# Private files
+attic/
