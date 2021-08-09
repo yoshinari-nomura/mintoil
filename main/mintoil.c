@@ -18,9 +18,9 @@
 extern void initialise_wifi();
 extern void push_task(void *pvParameters);
 
-float global_temperature_readings = 0.0;
-float global_humidity_readings = 0.0;
-bool global_ready_to_push = false;
+volatile float global_temperature_readings = 0.0;
+volatile float global_humidity_readings = 0.0;
+volatile bool global_ready_to_push = false;
 
 void blink_task(void *pvParameter)
 {
